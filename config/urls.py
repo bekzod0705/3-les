@@ -20,9 +20,11 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-
+from django.conf.urls.i18n import i18n_patterns
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/polls/',include('polls.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair')
 ]
+urlpatterns +=i18n_patterns(
+    path('api/polls/',include('polls.urls'))
+)
